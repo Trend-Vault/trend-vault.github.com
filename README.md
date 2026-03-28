@@ -1,0 +1,1 @@
+# trend-vault.github.com
