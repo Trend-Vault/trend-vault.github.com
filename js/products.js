@@ -6,6 +6,8 @@
 // Marvel: 301-320
 // DC: 401-420
 // Other: 501-520
+// Nature: 601-620
+// Quotes: 701-720
 
 const products = [
   // ==================== ANIME Series (IDs: 1-20) ====================
@@ -513,6 +515,190 @@ const products = [
     priceA4: 20, 
     priceA3: 40, 
     img: "assets/images/other/Other-5.jpg" 
+  },
+  
+  // ==================== NATURE Series (IDs: 601-620) ====================
+  { 
+    id: 601, 
+    name: "NA-1", 
+    displayName: "NA-1 • Serene Forest", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-1.jpg" 
+  },
+  { 
+    id: 602, 
+    name: "NA-2", 
+    displayName: "NA-2 • Mountain Sunrise", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-2.jpg" 
+  },
+  { 
+    id: 603, 
+    name: "NA-3", 
+    displayName: "NA-3 • Ocean Waves", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-3.jpg" 
+  },
+  { 
+    id: 604, 
+    name: "NA-4", 
+    displayName: "NA-4 • Cherry Blossom", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-4.jpg" 
+  },
+  { 
+    id: 605, 
+    name: "NA-5", 
+    displayName: "NA-5 • Northern Lights", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-5.jpg" 
+  },
+  { 
+    id: 606, 
+    name: "NA-6", 
+    displayName: "NA-6 • Waterfall Paradise", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-6.jpg" 
+  },
+  { 
+    id: 607, 
+    name: "NA-7", 
+    displayName: "NA-7 • Desert Sunset", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-7.jpg" 
+  },
+  { 
+    id: 608, 
+    name: "NA-8", 
+    displayName: "NA-8 • Tropical Beach", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-8.jpg" 
+  },
+  { 
+    id: 609, 
+    name: "NA-9", 
+    displayName: "NA-9 • Autumn Leaves", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-9.jpg" 
+  },
+  { 
+    id: 610, 
+    name: "NA-10", 
+    displayName: "NA-10 • Snowy Mountains", 
+    category: "nature", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/nature/NA-10.jpg" 
+  },
+  
+  // ==================== QUOTES Series (IDs: 701-720) ====================
+  { 
+    id: 701, 
+    name: "Q-1", 
+    displayName: "Q-1 • Dream Big", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-1.jpg" 
+  },
+  { 
+    id: 702, 
+    name: "Q-2", 
+    displayName: "Q-2 • Stay Strong", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-2.jpg" 
+  },
+  { 
+    id: 703, 
+    name: "Q-3", 
+    displayName: "Q-3 • Believe in Yourself", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-3.jpg" 
+  },
+  { 
+    id: 704, 
+    name: "Q-4", 
+    displayName: "Q-4 • Never Give Up", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-4.jpg" 
+  },
+  { 
+    id: 705, 
+    name: "Q-5", 
+    displayName: "Q-5 • Make It Happen", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-5.jpg" 
+  },
+  { 
+    id: 706, 
+    name: "Q-6", 
+    displayName: "Q-6 • Rise Above", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-6.jpg" 
+  },
+  { 
+    id: 707, 
+    name: "Q-7", 
+    displayName: "Q-7 • Be the Change", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-7.jpg" 
+  },
+  { 
+    id: 708, 
+    name: "Q-8", 
+    displayName: "Q-8 • Inspire Greatness", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-8.jpg" 
+  },
+  { 
+    id: 709, 
+    name: "Q-9", 
+    displayName: "Q-9 • Positive Vibes", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-9.jpg" 
+  },
+  { 
+    id: 710, 
+    name: "Q-10", 
+    displayName: "Q-10 • Live Your Best Life", 
+    category: "quotes", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/quotes/Q-10.jpg" 
   }
 ];
 
