@@ -390,32 +390,31 @@ function submitOrderWithAddress() {
   orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
   orderMessage += "*✅ Please confirm this order*";
   
-  // WhatsApp number (REPLACE WITH YOUR ACTUAL NUMBER)
-  const whatsappNumber = "7607345514"; // CHANGE THIS TO YOUR NUMBER
+  // WhatsApp number (with country code)
+  const whatsappNumber = "917607345514";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
   
-  // Close modal after short delay
-  setTimeout(() => {
-    const modal = document.querySelector('.address-modal');
-    if (modal) modal.remove();
-    
-    // Redirect to WhatsApp
-    window.open(whatsappUrl, '_blank');
-    
-    // Clear cart after successful order placement
-    setTimeout(() => {
-      clearCart();
-      showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
-      
-      // Close cart sidebar if open
-      const cartSidebar = document.querySelector('.cart-sidebar');
-      if (cartSidebar && cartSidebar.classList.contains('open')) {
-        cartSidebar.classList.remove('open');
-        const overlay = document.querySelector('.overlay');
-        if (overlay) overlay.classList.remove('active');
-      }
-    }, 500);
-  }, 1000);
+  console.log("Opening WhatsApp with number:", whatsappNumber); // Debug log
+  console.log("WhatsApp URL:", whatsappUrl); // Debug log
+  
+  // Close modal first
+  const modal = document.querySelector('.address-modal');
+  if (modal) modal.remove();
+  
+  // Open WhatsApp immediately (no delays to avoid popup blockers)
+  window.open(whatsappUrl, '_blank');
+  
+  // Clear cart and show confirmation
+  clearCart();
+  showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
+  
+  // Close cart sidebar if open
+  const cartSidebar = document.querySelector('.cart-sidebar');
+  if (cartSidebar && cartSidebar.classList.contains('open')) {
+    cartSidebar.classList.remove('open');
+    const overlay = document.querySelector('.overlay');
+    if (overlay) overlay.classList.remove('active');
+  }
 }
 
 // Enhanced checkout function with minimum order check
