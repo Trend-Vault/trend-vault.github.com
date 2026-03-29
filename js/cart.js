@@ -391,7 +391,7 @@ function submitOrderWithAddress() {
   orderMessage += "*✅ Please confirm this order*";
   
   // WhatsApp number (REPLACE WITH YOUR ACTUAL NUMBER)
-  const whatsappNumber = "917607345514"; // CHANGE THIS TO YOUR NUMBER
+  const whatsappNumber = "7607345514"; // CHANGE THIS TO YOUR NUMBER
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
   
   // Close modal after short delay
