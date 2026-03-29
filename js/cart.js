@@ -7,7 +7,6 @@ function loadCart() {
   if (saved) {
     try {
       cart = JSON.parse(saved);
-      // Validate cart data integrity
       if (!Array.isArray(cart)) cart = [];
     } catch (e) {
       console.error("Error loading cart:", e);
@@ -15,7 +14,7 @@ function loadCart() {
     }
   }
   updateCartUI();
-  updateCartCount(); // Add this if you have cart count display
+  updateCartCount();
 }
 
 // Save cart to localStorage
@@ -23,7 +22,7 @@ function saveCart() {
   try {
     localStorage.setItem("trendVaultFinalCart", JSON.stringify(cart));
     updateCartUI();
-    updateCartCount(); // Add this if you have cart count display
+    updateCartCount();
   } catch (e) {
     console.error("Error saving cart:", e);
     showToast("Error saving cart");
@@ -58,7 +57,7 @@ function calculateTotalWithOffer() {
   });
   
   const groups = Math.floor(a3Count / 3);
-  const discount = groups * ((40 * 3) - 99); // ₹40 each × 3 = ₹120, offer ₹99 = ₹21 discount per group
+  const discount = groups * ((40 * 3) - 99);
   
   return {
     total,
@@ -72,7 +71,6 @@ function calculateTotalWithOffer() {
 
 // Add product to cart
 function addToCart(product, selectedSize) {
-  // Validate product data
   if (!product || !selectedSize) {
     console.error("Invalid product or size");
     showToast("Error adding to cart");
@@ -81,7 +79,6 @@ function addToCart(product, selectedSize) {
   
   const price = selectedSize === "A3" ? product.priceA3 : product.priceA4;
   
-  // Validate price
   if (!price || price <= 0) {
     console.error("Invalid price");
     showToast("Price error");
@@ -103,14 +100,12 @@ function addToCart(product, selectedSize) {
       price: price,
       img: product.img,
       quantity: 1,
-      addedAt: new Date().toISOString() // Track when added
+      addedAt: new Date().toISOString()
     });
     showToast(`${product.displayName} (${selectedSize}) added to cart`);
   }
   
   saveCart();
-  
-  // Optional: Animate cart icon
   animateCartIcon();
 }
 
@@ -144,17 +139,6 @@ function removeFromCart(id, size) {
   }
 }
 
-// Remove item completely (new function)
-function removeItemCompletely(id, size) {
-  const index = cart.findIndex(item => item.id === id && item.size === size);
-  if (index !== -1) {
-    const itemName = cart[index].displayName;
-    cart.splice(index, 1);
-    saveCart();
-    showToast(`${itemName} removed from cart`);
-  }
-}
-
 // Clear entire cart with confirmation
 function clearCart() {
   if (cart.length === 0) {
@@ -162,7 +146,6 @@ function clearCart() {
     return;
   }
   
-  // Optional: Add confirmation dialog
   if (confirm("Are you sure you want to clear your entire cart?")) {
     cart = [];
     saveCart();
@@ -213,6 +196,8 @@ function showMinimumOrderDialog(remainingAmount) {
 
 // Address Form Modal
 function showAddressForm() {
+  console.log("Showing address form"); // Debug log
+  
   // Remove any existing address modal
   const existingModal = document.querySelector('.address-modal');
   if (existingModal) existingModal.remove();
@@ -285,15 +270,21 @@ function showAddressForm() {
   });
   
   // Handle cancel button
-  modal.querySelector('.cancel-btn').addEventListener('click', () => {
-    modal.remove();
-  });
+  const cancelBtn = modal.querySelector('.cancel-btn');
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', () => {
+      modal.remove();
+    });
+  }
   
   // Handle form submission
-  document.getElementById('addressForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitOrderWithAddress();
-  });
+  const form = document.getElementById('addressForm');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      submitOrderWithAddress();
+    });
+  }
 }
 
 // Format cart items for WhatsApp message
@@ -308,15 +299,12 @@ function formatCartItemsForWhatsApp() {
     message += `   Price: ₹${item.price} × ${item.quantity} = ₹${item.price * item.quantity}\n\n`;
   });
   
-  const { total, discount, finalTotal, groups, remainingForNextOffer } = calculateTotalWithOffer();
+  const { total, discount, finalTotal, groups } = calculateTotalWithOffer();
   
   message += "─".repeat(30) + "\n";
   message += `*Subtotal:* ₹${total}\n`;
   if (groups > 0) {
     message += `*Bundle Offer:* ${groups} × (3 A3 for ₹99) = -₹${discount}\n`;
-    if (remainingForNextOffer > 0 && remainingForNextOffer < 3) {
-      message += `*Info:* Add ${remainingForNextOffer} more A3 to get another bundle offer!\n`;
-    }
   }
   message += `*Total Amount:* ₹${finalTotal}\n\n`;
   
@@ -359,7 +347,9 @@ function validateAddress(fullName, phone, address, city, state, pincode) {
 }
 
 // Submit order with address details
-async function submitOrderWithAddress() {
+function submitOrderWithAddress() {
+  console.log("Submitting order"); // Debug log
+  
   // Get address details
   const fullName = document.getElementById('fullName').value.trim();
   const phone = document.getElementById('phone').value.trim();
@@ -377,9 +367,11 @@ async function submitOrderWithAddress() {
   
   // Show loading state
   const submitBtn = document.querySelector('.submit-order-btn');
-  const originalText = submitBtn.textContent;
-  submitBtn.textContent = 'Processing...';
-  submitBtn.disabled = true;
+  if (submitBtn) {
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Processing...';
+    submitBtn.disabled = true;
+  }
   
   // Build complete order message
   let orderMessage = formatCartItemsForWhatsApp();
@@ -398,8 +390,8 @@ async function submitOrderWithAddress() {
   orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
   orderMessage += "*✅ Please confirm this order*";
   
-  // WhatsApp number (replace with your actual number)
-  const whatsappNumber = "919876543210"; // Format: country code + number without '+'
+  // WhatsApp number (REPLACE WITH YOUR ACTUAL NUMBER)
+  const whatsappNumber = "917607345514"; // CHANGE THIS TO YOUR NUMBER
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
   
   // Close modal after short delay
@@ -415,7 +407,7 @@ async function submitOrderWithAddress() {
       clearCart();
       showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
       
-      // Optional: Close cart sidebar if open
+      // Close cart sidebar if open
       const cartSidebar = document.querySelector('.cart-sidebar');
       if (cartSidebar && cartSidebar.classList.contains('open')) {
         cartSidebar.classList.remove('open');
@@ -428,27 +420,32 @@ async function submitOrderWithAddress() {
 
 // Enhanced checkout function with minimum order check
 function checkout() {
+  console.log("Checkout called", cart); // Debug log
+  
   if (cart.length === 0) {
     showToast("Your cart is empty! Add some items first.");
     return;
   }
   
   const { finalTotal } = calculateTotalWithOffer();
+  console.log("Cart total:", finalTotal); // Debug log
   
   // Check minimum order amount
   if (finalTotal < 100) {
     const remaining = getRemainingAmount();
+    console.log("Minimum order not met, remaining:", remaining); // Debug log
     showMinimumOrderDialog(remaining);
     return;
   }
   
   // Show address form
+  console.log("Showing address form"); // Debug log
   showAddressForm();
 }
 
 // Update cart UI
 function updateCartUI() {
-  const { finalTotal, total, discount, groups, remainingForNextOffer } = calculateTotalWithOffer();
+  const { finalTotal, total, discount, groups } = calculateTotalWithOffer();
   
   // Update cart items display
   const cartItemsContainer = document.querySelector('.cart-items');
@@ -489,24 +486,28 @@ function updateCartUI() {
     cartTotalElement.innerHTML = `Total: ₹${finalTotal}`;
   }
   
-  // Update checkout button state
+  // Update checkout button - IMPORTANT: Re-attach event listener
   const checkoutBtn = document.querySelector('.checkout-btn');
   if (checkoutBtn) {
+    // Remove existing event listeners to avoid duplicates
+    const newCheckoutBtn = checkoutBtn.cloneNode(true);
+    checkoutBtn.parentNode.replaceChild(newCheckoutBtn, checkoutBtn);
+    
+    // Add fresh event listener
+    newCheckoutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Checkout button clicked");
+      checkout();
+    });
+    
+    // Update button state
     if (finalTotal < 100) {
-      checkoutBtn.classList.add('disabled');
-      checkoutBtn.title = `Add ₹${getRemainingAmount()} more to place order`;
+      newCheckoutBtn.classList.add('disabled');
+      newCheckoutBtn.title = `Add ₹${getRemainingAmount()} more to place order`;
     } else {
-      checkoutBtn.classList.remove('disabled');
-      checkoutBtn.title = 'Proceed to checkout';
-    }
-  }
-  
-  // Optional: Show bundle progress
-  if (remainingForNextOffer > 0 && remainingForNextOffer < 3) {
-    const bundleProgress = document.querySelector('.bundle-progress');
-    if (bundleProgress) {
-      bundleProgress.innerHTML = `Add ${remainingForNextOffer} more A3 prints to get another bundle offer!`;
-      bundleProgress.style.display = 'block';
+      newCheckoutBtn.classList.remove('disabled');
+      newCheckoutBtn.title = 'Proceed to checkout';
     }
   }
 }
@@ -527,9 +528,8 @@ function showToast(message, duration = 3000) {
   }, duration);
 }
 
-// Add CSS styles dynamically (if not already in your CSS file)
+// Add CSS styles dynamically
 function addCartStyles() {
-  // Check if styles already added
   if (document.querySelector('#cart-dynamic-styles')) return;
   
   const style = document.createElement('style');
@@ -543,17 +543,6 @@ function addCartStyles() {
     
     .cart-item-details {
       flex: 1;
-    }
-    
-    .bundle-progress {
-      background: rgba(0, 212, 255, 0.12);
-      border-radius: 8px;
-      padding: 8px;
-      text-align: center;
-      font-size: 0.8rem;
-      margin: 10px 0;
-      color: #00D4FF;
-      display: none;
     }
     
     .cart-item-remove {
@@ -572,22 +561,10 @@ function addCartStyles() {
   document.head.appendChild(style);
 }
 
-// Export functions for use in other files (if using modules)
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    cart,
-    loadCart,
-    saveCart,
-    addToCart,
-    removeFromCart,
-    clearCart,
-    checkout,
-    calculateTotalWithOffer
-  };
-}
-
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM loaded, initializing cart"); // Debug log
+  
   addCartStyles();
   loadCart();
   
@@ -596,12 +573,22 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addToCart = addToCart;
   window.removeFromCart = removeFromCart;
   window.clearCart = clearCart;
-  window.removeItemCompletely = removeItemCompletely;
   window.showAddressForm = showAddressForm;
   window.submitOrderWithAddress = submitOrderWithAddress;
   window.showMinimumOrderDialog = showMinimumOrderDialog;
   
-  // Optional: Close modals with Escape key
+  // Also attach to any existing checkout buttons
+  const checkoutBtns = document.querySelectorAll('.checkout-btn');
+  checkoutBtns.forEach(btn => {
+    btn.removeEventListener('click', checkout);
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log("Checkout button clicked from direct binding");
+      checkout();
+    });
+  });
+  
+  // Close modals with Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const modals = document.querySelectorAll('.min-order-modal, .address-modal');

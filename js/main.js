@@ -19,27 +19,6 @@ function closeCart() {
   cartOverlay.classList.remove("active");
 }
 
-// Checkout function
-function checkout() {
-  if (cart.length === 0) {
-    showToast("Cart is empty!");
-    return;
-  }
-  
-  const { finalTotal, groups } = calculateTotalWithOffer();
-  let offerMessage = "";
-  
-  if (groups > 0) {
-    offerMessage = `\n🎉 ${groups} x (3 A3 Posters for ₹99) offer applied!`;
-  }
-  
-  alert(`✨ Order placed! Total: ₹${finalTotal}${offerMessage}\n\nThank you for shopping at Trend-Vault!`);
-  
-  cart = [];
-  saveCart();
-  closeCart();
-}
-
 // Set filter and re-render
 function setFilter(filter) {
   currentFilter = filter;
@@ -80,7 +59,6 @@ function initEventListeners() {
   cartIcon.addEventListener("click", openCart);
   closeCartBtn.addEventListener("click", closeCart);
   cartOverlay.addEventListener("click", closeCart);
-  document.getElementById("checkoutBtn")?.addEventListener("click", checkout);
 }
 
 // Initialize the application
