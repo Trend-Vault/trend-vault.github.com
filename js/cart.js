@@ -237,9 +237,137 @@ function showAddressForm() {
   }
 }
 
-// Submit order from sidebar form
+// Store address details for payment confirmation
+let pendingOrderDetails = null;
+
+// Show QR Payment Screen
+function showQRPaymentScreen(orderDetails) {
+  console.log("Showing QR payment screen"); // Debug log
+  
+  // Store order details
+  pendingOrderDetails = orderDetails;
+  
+  // Update order amount in QR view
+  const { finalTotal } = calculateTotalWithOffer();
+  const orderAmountElement = document.getElementById('qrOrderAmount');
+  if (orderAmountElement) {
+    orderAmountElement.textContent = `₹${finalTotal}`;
+  }
+  
+  // Switch views
+  const addressView = document.getElementById('addressView');
+  const qrPaymentView = document.getElementById('qrPaymentView');
+  const cartTitle = document.getElementById('cartTitle');
+  
+  if (addressView) addressView.style.display = 'none';
+  if (qrPaymentView) qrPaymentView.style.display = 'block';
+  if (cartTitle) cartTitle.textContent = 'Payment';
+  
+  // Set up back button
+  const backBtn = document.getElementById('backToAddressBtn');
+  if (backBtn) {
+    backBtn.onclick = () => {
+      if (qrPaymentView) qrPaymentView.style.display = 'none';
+      if (addressView) addressView.style.display = 'block';
+      if (cartTitle) cartTitle.textContent = 'Delivery Details';
+      pendingOrderDetails = null;
+    };
+  }
+  
+  // Set up back button (alternative)
+  const backPaymentBtn = document.getElementById('backPaymentBtn');
+  if (backPaymentBtn) {
+    backPaymentBtn.onclick = () => {
+      if (qrPaymentView) qrPaymentView.style.display = 'none';
+      if (addressView) addressView.style.display = 'block';
+      if (cartTitle) cartTitle.textContent = 'Delivery Details';
+      pendingOrderDetails = null;
+    };
+  }
+  
+  // Set up payment done button
+  const paymentDoneBtn = document.getElementById('paymentDoneBtn');
+  if (paymentDoneBtn) {
+    paymentDoneBtn.onclick = () => {
+      confirmPaymentAndSendWhatsApp();
+    };
+  }
+  
+  // Set up fallback WhatsApp button
+  const cannotScanBtn = document.getElementById('cannotScanBtn');
+  if (cannotScanBtn) {
+    cannotScanBtn.onclick = () => {
+      confirmPaymentAndSendWhatsApp();
+    };
+  }
+}
+
+// Confirm payment and send to WhatsApp
+function confirmPaymentAndSendWhatsApp() {
+  console.log("Payment confirmed, sending to WhatsApp"); // Debug log
+  
+  if (!pendingOrderDetails) {
+    showToast("Order details not found");
+    return;
+  }
+  
+  const { fullName, phone, email, address, city, state, pincode, landmark } = pendingOrderDetails;
+  
+  // Build complete order message
+  let orderMessage = formatCartItemsForWhatsApp();
+  
+  orderMessage += "*DELIVERY ADDRESS:*\n";
+  orderMessage += "─".repeat(30) + "\n";
+  orderMessage += `*Name:* ${fullName}\n`;
+  orderMessage += `*Phone:* ${phone}\n`;
+  if (email) orderMessage += `*Email:* ${email}\n`;
+  orderMessage += `*Address:* ${address}\n`;
+  if (landmark) orderMessage += `*Landmark:* ${landmark}\n`;
+  orderMessage += `*City:* ${city}\n`;
+  orderMessage += `*State:* ${state}\n`;
+  orderMessage += `*Pincode:* ${pincode}\n\n`;
+  
+  orderMessage += "*💳 Payment Status:* ✅ UPI Payment Done\n";
+  orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
+  orderMessage += "*✅ Please confirm this order*";
+  
+  // WhatsApp number
+  const whatsappNumber = "917607345514";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
+  
+  console.log("Opening WhatsApp"); // Debug log
+  
+  // Open WhatsApp
+  window.open(whatsappUrl, '_blank');
+  
+  // Clear cart and show confirmation
+  clearCart();
+  showToast("Payment confirmed! Order sent to WhatsApp ✓");
+  
+  // Close cart sidebar
+  const cartSidebar = document.querySelector('.cart-sidebar');
+  if (cartSidebar && cartSidebar.classList.contains('open')) {
+    cartSidebar.classList.remove('open');
+    const overlay = document.querySelector('.overlay');
+    if (overlay) overlay.classList.remove('active');
+  }
+  
+  // Reset
+  pendingOrderDetails = null;
+  document.getElementById('addressFormSidebar').reset();
+  
+  // Reset views
+  const qrPaymentView = document.getElementById('qrPaymentView');
+  const addressView = document.getElementById('addressView');
+  const cartView = document.getElementById('cartView');
+  if (qrPaymentView) qrPaymentView.style.display = 'none';
+  if (addressView) addressView.style.display = 'none';
+  if (cartView) cartView.style.display = 'flex';
+}
+
+// Submit order with address details (modified to show QR instead of WhatsApp)
 function submitOrderWithAddressFromSidebar() {
-  console.log("Submitting order from sidebar"); // Debug log
+  console.log("Submitting address form, showing QR payment"); // Debug log
   
   // Get address details from sidebar form
   const fullName = document.getElementById('sidebarFullName').value.trim();
@@ -259,51 +387,28 @@ function submitOrderWithAddressFromSidebar() {
   // Show loading state
   const submitBtn = document.getElementById('sidebarSubmitBtn');
   if (submitBtn) {
-    const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Processing...';
     submitBtn.disabled = true;
   }
   
-  // Build complete order message
-  let orderMessage = formatCartItemsForWhatsApp();
-  
-  orderMessage += "*DELIVERY ADDRESS:*\n";
-  orderMessage += "─".repeat(30) + "\n";
-  orderMessage += `*Name:* ${fullName}\n`;
-  orderMessage += `*Phone:* ${phone}\n`;
-  if (email) orderMessage += `*Email:* ${email}\n`;
-  orderMessage += `*Address:* ${address}\n`;
-  if (landmark) orderMessage += `*Landmark:* ${landmark}\n`;
-  orderMessage += `*City:* ${city}\n`;
-  orderMessage += `*State:* ${state}\n`;
-  orderMessage += `*Pincode:* ${pincode}\n\n`;
-  
-  orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
-  orderMessage += "*✅ Please confirm this order*";
-  
-  // WhatsApp number (with country code)
-  const whatsappNumber = "917607345514";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
-  
-  console.log("Opening WhatsApp with number:", whatsappNumber); // Debug log
-  
-  // Open WhatsApp immediately
-  window.open(whatsappUrl, '_blank');
-  
-  // Clear cart and show confirmation
-  clearCart();
-  showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
-  
-  // Close cart sidebar
-  const cartSidebar = document.querySelector('.cart-sidebar');
-  if (cartSidebar && cartSidebar.classList.contains('open')) {
-    cartSidebar.classList.remove('open');
-    const overlay = document.querySelector('.overlay');
-    if (overlay) overlay.classList.remove('active');
-  }
-  
-  // Reset form
-  document.getElementById('addressFormSidebar').reset();
+  // Store address details and show QR screen
+  setTimeout(() => {
+    showQRPaymentScreen({
+      fullName,
+      phone,
+      email,
+      address,
+      city,
+      state,
+      pincode,
+      landmark
+    });
+    
+    if (submitBtn) {
+      submitBtn.textContent = 'Place Order';
+      submitBtn.disabled = false;
+    }
+  }, 300);
 }
 
 // Format cart items for WhatsApp message
@@ -510,6 +615,8 @@ function addCartStyles() {
       flex: 1;
       overflow-y: auto;
       padding-bottom: 10px;
+      display: flex;
+      flex-direction: column;
     }
     
     #addressView {
@@ -518,21 +625,43 @@ function addCartStyles() {
       flex: 1;
     }
     
+    #qrPaymentView {
+      padding: 15px;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
     #addressView input,
     #addressView textarea {
       font-family: inherit;
     }
     
-    #backToCartBtn {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 15px;
+    #backToCartBtn,
+    #backToAddressBtn {
+      background: none;
+      border: none;
+      color: #00D4FF;
+      cursor: pointer;
+      font-size: 1rem;
+      text-align: left;
       transition: color 0.2s;
+      padding: 5px 0;
     }
     
-    #backToCartBtn:hover {
+    #backToCartBtn:hover,
+    #backToAddressBtn:hover {
       color: #FF66CC;
+    }
+    
+    #qrOrderAmount {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
   `;
   document.head.appendChild(style);
@@ -552,6 +681,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.clearCart = clearCart;
   window.showAddressForm = showAddressForm;
   window.submitOrderWithAddressFromSidebar = submitOrderWithAddressFromSidebar;
+  window.showQRPaymentScreen = showQRPaymentScreen;
+  window.confirmPaymentAndSendWhatsApp = confirmPaymentAndSendWhatsApp;
   window.showMinimumOrderDialog = showMinimumOrderDialog;
   
   // Also attach to any existing checkout buttons
@@ -565,20 +696,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Close minimum order modal with Escape key
+  // Close modals/views with Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const minOrderModal = document.querySelector('.min-order-modal');
       if (minOrderModal) minOrderModal.remove();
       
-      // Also close address form view by going back to cart
+      // Handle closing views in sidebar
       const cartView = document.getElementById('cartView');
       const addressView = document.getElementById('addressView');
+      const qrPaymentView = document.getElementById('qrPaymentView');
       const cartTitle = document.getElementById('cartTitle');
-      if (addressView && addressView.style.display !== 'none') {
-        if (cartView) cartView.style.display = 'flex';
+      
+      // If on QR screen, go back to address
+      if (qrPaymentView && qrPaymentView.style.display !== 'none') {
+        if (qrPaymentView) qrPaymentView.style.display = 'none';
+        if (addressView) addressView.style.display = 'block';
+        if (cartTitle) cartTitle.textContent = 'Delivery Details';
+        pendingOrderDetails = null;
+      }
+      // If on address screen, go back to cart
+      else if (addressView && addressView.style.display !== 'none') {
         if (addressView) addressView.style.display = 'none';
+        if (cartView) cartView.style.display = 'flex';
         if (cartTitle) cartTitle.textContent = 'Your Cart';
+        document.getElementById('addressFormSidebar').reset();
       }
     }
   });
