@@ -13,278 +13,206 @@ const products = [
   // ==================== ANIME Series (IDs: 1-20) ====================
   { 
     id: 1, 
-    name: "Anime-1", 
-    displayName: "Anime-1 • Neon Shinobi", 
+    displayName: "A-1 • Satoru Gojo", 
     category: "anime", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/anime/Anime-1.jpg" 
+    img: "assets/images/anime/A-1.jpg" 
   },
   { 
     id: 2, 
-    name: "Anime-2", 
-    displayName: "Anime-2 • Samurai Cyber", 
+    displayName: "A-2 • Roronoa Zoro", 
     category: "anime", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/anime/Anime-2.jpg" 
+    img: "assets/images/anime/A-2.jpg" 
   },
   { 
     id: 3, 
-    name: "Anime-3", 
-    displayName: "Anime-3 • Dragon Spirit", 
+    displayName: "A-3 • Levi Ackerman", 
     category: "anime", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/anime/Anime-3.jpg" 
-  },
-  { 
-    id: 4, 
-    name: "Anime-4", 
-    displayName: "Anime-4 • Celestial Girls", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-4.jpg" 
-  },
-  { 
-    id: 5, 
-    name: "Anime-5", 
-    displayName: "Anime-5 • Mecha Rage", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-5.jpg" 
-  },
-  { 
-    id: 6, 
-    name: "Anime-6", 
-    displayName: "Anime-6 • Demon Slayer", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-6.jpg" 
-  },
-  { 
-    id: 7, 
-    name: "Anime-7", 
-    displayName: "Anime-7 • Jujutsu Kaisen", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-7.jpg" 
-  },
-  { 
-    id: 8, 
-    name: "Anime-8", 
-    displayName: "Anime-8 • One Piece", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-8.jpg" 
-  },
-  { 
-    id: 9, 
-    name: "Anime-9", 
-    displayName: "Anime-9 • Attack on Titan", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-9.jpg" 
-  },
-  { 
-    id: 10, 
-    name: "Anime-10", 
-    displayName: "Anime-10 • My Hero Academia", 
-    category: "anime", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/anime/Anime-10.jpg" 
+    img: "assets/images/anime/A-3.jpg" 
   },
   
   // ==================== CAR Series (IDs: 101-120) ====================
   { 
     id: 101, 
-    name: "Car-1", 
-    displayName: "Car-101 • JDM GT-R R34", 
+    displayName: "C-1 • JDM GT-R R34", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-1.jpg" 
+    img: "assets/images/car/C-1.jpg" 
   },
   { 
     id: 102, 
-    name: "Car-2", 
-    displayName: "Car-102 • Porsche 911 GT3", 
+    displayName: "C-2 • Porsche 911 GT3", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-2.jpg" 
+    img: "assets/images/car/C-2.jpg" 
   },
   { 
     id: 103, 
-    name: "Car-3", 
-    displayName: "Car-103 • Ferrari F40", 
+    displayName: "C-3 • Ferrari F40", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-3.jpg" 
+    img: "assets/images/car/C-3.jpg" 
   },
   { 
     id: 104, 
-    name: "Car-4", 
-    displayName: "Car-104 • Lamborghini Aventador", 
+    displayName: "C-4 • Lamborghini Aventador", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-4.jpg" 
+    img: "assets/images/car/C-4.jpg" 
   },
   { 
-    id: 105, 
-    name: "Car-5", 
-    displayName: "Car-105 • Toyota Supra MK4", 
+    id: 105,  
+    displayName: "C-5 • Toyota Supra MK4", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-5.jpg" 
+    img: "assets/images/car/C-5.jpg" 
   },
   { 
     id: 106, 
-    name: "Car-6", 
-    displayName: "Car-106 • BMW M4 Competition", 
+    displayName: "C-6 • BMW M4 Competition", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-6.jpg" 
+    img: "assets/images/car/C-6.jpg" 
   },
   { 
     id: 107, 
-    name: "Car-7", 
-    displayName: "Car-107 • Mercedes AMG GT", 
+    displayName: "C-7 • Mercedes AMG GT", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-7.jpg" 
+    img: "assets/images/car/C-7.jpg" 
   },
   { 
     id: 108, 
-    name: "Car-8", 
-    displayName: "Car-108 • Ford Mustang GT", 
+    name: "C-8", 
+    displayName: "C-8 • Ford Mustang GT", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-8.jpg" 
+    img: "assets/images/car/C-8.jpg" 
   },
   { 
     id: 109, 
-    name: "Car-9", 
-    displayName: "Car-109 • Chevrolet Corvette", 
+    name: "C-9", 
+    displayName: "C-9 • Chevrolet Corvette", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-9.jpg" 
+    img: "assets/images/car/C-9.jpg" 
   },
   { 
     id: 110, 
-    name: "Car-10", 
-    displayName: "Car-110 • McLaren 720S", 
+    name: "C-10", 
+    displayName: "C-10 • McLaren 720S", 
     category: "car", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/car/Car-10.jpg" 
+    img: "assets/images/car/C-10.jpg" 
+  },
+   { 
+    id: 111, 
+    name: "C-11", 
+    displayName: "C-11 • Lamborghini Huracán", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-11.jpg" 
+  },
+     { 
+    id: 112, 
+    name: "C-12", 
+    displayName: "C-12 • Ferrari 812 Superfast", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-12.jpg" 
+  },
+     { 
+    id: 113, 
+    name: "C-13", 
+    displayName: "C-13 • Aston Martin DB11", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-13.jpg" 
+  },
+     { 
+    id: 114, 
+    name: "C-14", 
+    displayName: "C-14 • Bugatti Chiron", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-14.jpg" 
+  },
+   { 
+    id: 115, 
+    name: "C-15", 
+    displayName: "C-15 • McLaren 720S", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-15.jpg" 
+  },
+   { 
+    id: 116, 
+    name: "C-16", 
+    displayName: "C-16 • Ferrari 812 Superfast", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-16.jpg" 
+  },
+   { 
+    id: 117, 
+    name: "C-17", 
+    displayName: "C-17 • Aston Martin DB11", 
+    category: "car", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/car/C-17.jpg" 
   },
   
   // ==================== BIKE Series (IDs: 201-220) ====================
   { 
     id: 201, 
     name: "Bike-1", 
-    displayName: "Bike-201 • Ninja H2R", 
+    displayName: "B-1 • Ninja H2R", 
     category: "bike", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/bike/Bike-1.jpg" 
+    img: "assets/images/bike/B-1.jpg" 
   },
   { 
     id: 202, 
     name: "Bike-2", 
-    displayName: "Bike-202 • Ducati Panigale V4", 
+    displayName: "B-2 • Ducati Panigale V4", 
     category: "bike", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/bike/Bike-2.jpg" 
+    img: "assets/images/bike/B-2.jpg" 
   },
   { 
     id: 203, 
     name: "Bike-3", 
-    displayName: "Bike-203 • BMW S1000RR", 
+    displayName: "B-3 • BMW S1000RR", 
     category: "bike", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/bike/Bike-3.jpg" 
+    img: "assets/images/bike/B-3.jpg" 
   },
-  { 
-    id: 204, 
-    name: "Bike-4", 
-    displayName: "Bike-204 • Honda Fireblade", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-4.jpg" 
-  },
-  { 
-    id: 205, 
-    name: "Bike-5", 
-    displayName: "Bike-205 • Yamaha R1M", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-5.jpg" 
-  },
-  { 
-    id: 206, 
-    name: "Bike-6", 
-    displayName: "Bike-206 • Suzuki Hayabusa", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-6.jpg" 
-  },
-  { 
-    id: 207, 
-    name: "Bike-7", 
-    displayName: "Bike-207 • Aprilia RSV4", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-7.jpg" 
-  },
-  { 
-    id: 208, 
-    name: "Bike-8", 
-    displayName: "Bike-208 • KTM RC390", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-8.jpg" 
-  },
-  { 
-    id: 209, 
-    name: "Bike-9", 
-    displayName: "Bike-209 • Royal Enfield GT650", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-9.jpg" 
-  },
-  { 
-    id: 210, 
-    name: "Bike-10", 
-    displayName: "Bike-210 • Harley Davidson", 
-    category: "bike", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/bike/Bike-10.jpg" 
-  },
+  
   
   // ==================== MARVEL Series (IDs: 301-320) ====================
   { 
@@ -296,178 +224,16 @@ const products = [
     priceA3: 40, 
     img: "assets/images/marvel/Marvel-1.jpg" 
   },
-  { 
-    id: 302, 
-    name: "Marvel-2", 
-    displayName: "Marvel-302 • Iron Man", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-2.jpg" 
-  },
-  { 
-    id: 303, 
-    name: "Marvel-3", 
-    displayName: "Marvel-303 • Thor", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-3.jpg" 
-  },
-  { 
-    id: 304, 
-    name: "Marvel-4", 
-    displayName: "Marvel-304 • Captain America", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-4.jpg" 
-  },
-  { 
-    id: 305, 
-    name: "Marvel-5", 
-    displayName: "Marvel-305 • Black Panther", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-5.jpg" 
-  },
-  { 
-    id: 306, 
-    name: "Marvel-6", 
-    displayName: "Marvel-306 • Deadpool", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-6.jpg" 
-  },
-  { 
-    id: 307, 
-    name: "Marvel-7", 
-    displayName: "Marvel-307 • Wolverine", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-7.jpg" 
-  },
-  { 
-    id: 308, 
-    name: "Marvel-8", 
-    displayName: "Marvel-308 • Doctor Strange", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-8.jpg" 
-  },
-  { 
-    id: 309, 
-    name: "Marvel-9", 
-    displayName: "Marvel-309 • Guardians of Galaxy", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-9.jpg" 
-  },
-  { 
-    id: 310, 
-    name: "Marvel-10", 
-    displayName: "Marvel-310 • Avengers Assemble", 
-    category: "marvel", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/marvel/Marvel-10.jpg" 
-  },
   
-  // ==================== DC Series (IDs: 401-420) ====================
+    // ==================== DC Series (IDs: 401-420) ====================
   { 
     id: 401, 
     name: "DC-1", 
-    displayName: "DC-401 • Batman", 
+    displayName: "D-1 • Batman", 
     category: "dc", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/dc/DC-1.jpg" 
-  },
-  { 
-    id: 402, 
-    name: "DC-2", 
-    displayName: "DC-402 • Superman", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-2.jpg" 
-  },
-  { 
-    id: 403, 
-    name: "DC-3", 
-    displayName: "DC-403 • Wonder Woman", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-3.jpg" 
-  },
-  { 
-    id: 404, 
-    name: "DC-4", 
-    displayName: "DC-404 • The Joker", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-4.jpg" 
-  },
-  { 
-    id: 405, 
-    name: "DC-5", 
-    displayName: "DC-405 • Flash", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-5.jpg" 
-  },
-  { 
-    id: 406, 
-    name: "DC-6", 
-    displayName: "DC-406 • Aquaman", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-6.jpg" 
-  },
-  { 
-    id: 407, 
-    name: "DC-7", 
-    displayName: "DC-407 • Cyborg", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-7.jpg" 
-  },
-  { 
-    id: 408, 
-    name: "DC-8", 
-    displayName: "DC-408 • Harley Quinn", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-8.jpg" 
-  },
-  { 
-    id: 409, 
-    name: "DC-9", 
-    displayName: "DC-409 • Green Lantern", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-9.jpg" 
-  },
-  { 
-    id: 410, 
-    name: "DC-10", 
-    displayName: "DC-410 • Justice League", 
-    category: "dc", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/dc/DC-10.jpg" 
+    img: "assets/images/dc/D-1.jpg" 
   },
   
   // ==================== OTHER Series (IDs: 501-520) ====================
@@ -520,94 +286,86 @@ const products = [
   // ==================== NATURE Series (IDs: 601-620) ====================
   { 
     id: 601, 
-    name: "NA-1", 
-    displayName: "NA-1 • Serene Forest", 
+    name: "N-1", 
+    displayName: "N-1 • Serene Forest", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-1.jpg" 
+    img: "assets/images/nature/N-1.jpg" 
   },
   { 
     id: 602, 
-    name: "NA-2", 
-    displayName: "NA-2 • Mountain Sunrise", 
+    name: "N-2", 
+    displayName: "N-2 • Mountain Sunrise", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-2.jpg" 
+    img: "assets/images/nature/N-2.jpg" 
   },
   { 
     id: 603, 
-    name: "NA-3", 
-    displayName: "NA-3 • Ocean Waves", 
+    name: "N-3", 
+    displayName: "N-3 • Ocean Waves", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-3.jpg" 
+    img: "assets/images/nature/N-3.jpg" 
   },
   { 
     id: 604, 
-    name: "NA-4", 
-    displayName: "NA-4 • Cherry Blossom", 
+    name: "N-4", 
+    displayName: "N-4 • Cherry Blossom", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-4.jpg" 
+    img: "assets/images/nature/N-4.jpg" 
   },
   { 
     id: 605, 
-    name: "NA-5", 
-    displayName: "NA-5 • Northern Lights", 
+    name: "N-5", 
+    displayName: "N-5 • Northern Lights", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-5.jpg" 
+    img: "assets/images/nature/N-5.jpg" 
   },
   { 
     id: 606, 
-    name: "NA-6", 
-    displayName: "NA-6 • Waterfall Paradise", 
+    name: "N-6", 
+    displayName: "N-6 • Waterfall Paradise", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-6.jpg" 
+    img: "assets/images/nature/N-6.jpg" 
   },
   { 
     id: 607, 
-    name: "NA-7", 
-    displayName: "NA-7 • Desert Sunset", 
+    name: "N-7", 
+    displayName: "N-7 • Desert Sunset", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-7.jpg" 
+    img: "assets/images/nature/N-7.jpg" 
   },
   { 
     id: 608, 
-    name: "NA-8", 
-    displayName: "NA-8 • Tropical Beach", 
+    name: "N-8", 
+    displayName: "N-8 • Tropical Beach", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-8.jpg" 
+    img: "assets/images/nature/N-8.jpg" 
   },
   { 
     id: 609, 
-    name: "NA-9", 
-    displayName: "NA-9 • Autumn Leaves", 
+    name: "N-9", 
+    displayName: "N-9 • Autumn Leaves", 
     category: "nature", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/nature/NA-9.jpg" 
+    img: "assets/images/nature/N-9.jpg" 
   },
-  { 
-    id: 610, 
-    name: "NA-10", 
-    displayName: "NA-10 • Snowy Mountains", 
-    category: "nature", 
-    priceA4: 20, 
-    priceA3: 40, 
-    img: "assets/images/nature/NA-10.jpg" 
-  },
+
   
   // ==================== QUOTES Series (IDs: 701-720) ====================
   { 
