@@ -48,20 +48,64 @@
   </div>
 </div>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container hero-content">
-    <div class="hero-text">
-      <div class="offer-tag"><i class="fas fa-fire"></i> MEGA SALE LIVE</div>
-      <h1>Posters that <span class="gradient">hit different.</span></h1>
-      <p>A4: ₹20 | A3: ₹40 — Buy any 3 A3 posters for just ₹99! Premium quality prints, fast shipping. 🎬 Marvel • DC • Anime • Cars • Bikes</p>
-      <div class="btn-group">
-        <button class="btn btn-primary" id="shopNowBtn">Shop Now <i class="fas fa-arrow-right"></i></button>
-        <button class="btn btn-outline" id="exploreBtn">Explore Collection</button>
+<!-- Corner Wall Display Section -->
+<section class="corner-wall-section">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 10px; color: #00D4FF;"><i class="fas fa-cube"></i> See Posters in 3D</h2>
+    <p style="text-align: center; color: #A0A0C0; margin-bottom: 30px;">Select any poster below to preview on the corner wall</p>
+    
+    <div class="corner-wall-container">
+      <!-- 3D Corner Wall Display -->
+      <div class="corner-wall-display">
+        <img src="assets/images/corner_wall.jpg" alt="Corner Wall" class="corner-wall-bg">
+        
+        <!-- Layout Switcher Buttons -->
+        <div style="position: absolute; top: 10px; left: 10px; right: 10px; display: flex; gap: 6px; z-index: 50; flex-wrap: wrap;">
+          <button class="layout-btn active" data-layout="triangle" title="Inverted Triangle">▼</button>
+          <button class="layout-btn" data-layout="grid" title="Grid Layout">⊞</button>
+          <button class="layout-btn" data-layout="circle" title="Circle Layout">●</button>
+          <button class="layout-btn" data-layout="diamond" title="Diamond Layout">◇</button>
+          <button class="layout-btn" data-layout="line" title="Line Layout">─</button>
+        </div>
+        
+        <!-- Drag hint -->
+        <div style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(0, 0, 0, 0.6); padding: 8px 12px; border-radius: 6px; font-size: 0.8rem; color: #A0A0C0; text-align: center; z-index: 40; backdrop-filter: blur(8px);">
+          💡 Drag posters anywhere to reposition them freely • Click layout buttons to reset to presets
+        </div>
+        
+        <div id="wallPostersContainer" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;">
+          <!-- Multiple posters will be added here dynamically -->
+        </div>
       </div>
-    </div>
-    <div class="hero-image">
-      <img src="https://placehold.co/500x450/13122A/00D4FF?text=TREND+VAULT" alt="Trend-Vault Posters">
+      
+      <!-- Cart Posters Preview -->
+      <div class="poster-selector">
+        <h3 style="color: #00D4FF; margin-bottom: 10px;">👁️ Preview Your Order</h3>
+        <p style="font-size: 0.85rem; color: #A0A0C0; margin-bottom: 15px;">Click to see how your posters look on the wall</p>
+        
+        <div id="cartPostersContainer" style="border: 1px dashed #3A3A52; border-radius: 8px; padding: 20px; text-align: center; background: #1A1A2E; color: #A0A0C0; margin-bottom: 20px;">
+          <p style="margin: 0; font-size: 0.9rem;">📭 No posters in cart yet</p>
+          <p style="margin: 5px 0 0 0; font-size: 0.8rem;">Add items to preview them here</p>
+        </div>
+        
+        <div class="selector-posters" id="selectorPosters"></div>
+        
+        <!-- Preview Section with Actions -->
+        <div id="previewAddSection" style="display: none; border-top: 1px solid #3A3A52; margin-top: 15px; padding-top: 15px;">
+          <h4 style="color: #A0A0C0; margin-bottom: 10px; font-size: 0.9rem;" id="previewTitle">Previewing: </h4>
+          <div style="display: flex; gap: 8px;">
+            <button id="removeFromPreviewBtn" style="flex: 1; padding: 10px; border: 1px solid #FF6B6B; background: transparent; color: #FF6B6B; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+              ✕ Remove
+            </button>
+            <button id="closePreviewBtn" style="flex: 1; padding: 10px; border: 1px solid #3A3A52; background: transparent; color: #A0A0C0; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.2s;">
+              Close Preview
+            </button>
+            <button id="addToCartFromPreviewBtn" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #FF66CC, #00D4FF); border: none; color: #000; border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s;">
+              View in Cart
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

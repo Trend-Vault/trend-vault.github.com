@@ -596,6 +596,239 @@ body {
   opacity: 1;
 }
 
+/* Corner Wall Section */
+.corner-wall-section {
+  margin: 60px 0;
+  padding: 40px 0;
+  border-top: 1px solid #2A2A4A;
+  border-bottom: 1px solid #2A2A4A;
+}
+
+.corner-wall-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.corner-wall-display {
+  position: relative;
+  width: 100%;
+  height: 750px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0D0C1A;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.corner-wall-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.wall-poster {
+  position: absolute;
+  width: 94px;
+  height: 140px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+  cursor: grab;
+}
+
+.wall-poster:active {
+  cursor: grabbing;
+}
+
+.wall-poster.dragging {
+  opacity: 0.7;
+  transform: scale(1.1) !important;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+
+.wall-poster.drag-over {
+  border: 2px dashed #00D4FF;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.5);
+  transform: scale(1.08);
+}
+
+/* Removed - no longer used in free positioning mode */
+
+.wall-poster:hover {
+  box-shadow: 0 6px 16px rgba(0, 212, 255, 0.6);
+  border-color: #00D4FF;
+}
+
+.wall-poster.active {
+  border-color: #FF66CC;
+  box-shadow: 0 6px 16px rgba(255, 102, 204, 0.6);
+}
+
+.wall-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #FFF;
+}
+
+/* Layout Switcher Buttons */
+.layout-btn {
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid #3A3A52;
+  color: #A0A0C0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.layout-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: #00D4FF;
+  color: #00D4FF;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.layout-btn.active {
+  background: linear-gradient(135deg, #00D4FF, #7B2CBF);
+  border-color: #00D4FF;
+  color: #0D0C1A;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.6);
+}
+
+.poster-on-wall {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  transform: translate(0, 0);
+  width: 104px;
+  height: 156px;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  border: 2px solid #000;
+  transition: all 0.5s ease;
+}
+
+.poster-on-wall img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #FFF;
+}
+
+.poster-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.selector-posters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.selector-posters::-webkit-scrollbar {
+  width: 6px;
+}
+
+.selector-posters::-webkit-scrollbar-track {
+  background: #1A1A2E;
+  border-radius: 10px;
+}
+
+.selector-posters::-webkit-scrollbar-thumb {
+  background: #00D4FF;
+  border-radius: 10px;
+}
+
+/* Corner Wall Preview Buttons */
+#addToCartFromPreviewBtn {
+  transition: all 0.3s ease !important;
+}
+
+#addToCartFromPreviewBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 212, 255, 0.4);
+}
+
+#addToCartFromPreviewBtn:active {
+  transform: translateY(0);
+}
+
+#closePreviewBtn {
+  transition: all 0.2s;
+}
+
+#closePreviewBtn:hover {
+  border-color: #FF66CC;
+  color: #FF66CC;
+}
+
+.selector-poster-item {
+  cursor: pointer;
+  border: 2px solid #2A2A4A;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s;
+  position: relative;
+  background: #1A1A2E;
+  display: flex;
+  flex-direction: column;
+}
+
+.selector-poster-item:hover {
+  border-color: #FF66CC;
+  transform: scale(1.05);
+}
+
+.selector-poster-item.active {
+  border-color: #00D4FF;
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+.selector-poster-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive - Corner Wall */
+@media (max-width: 768px) {
+  .corner-wall-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .corner-wall-display {
+    height: 500px;
+  }
+  
+  .selector-posters {
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 250px;
+  }
+}
+
 footer {
   background: #0A0920;
   border-top: 1px solid #2A2A4A;

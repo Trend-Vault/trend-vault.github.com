@@ -68,6 +68,11 @@ function updateCartUI() {
       removeFromCart(id, size);
     });
   });
+  
+  // Update corner wall display with current cart items
+  if (typeof updateCornerWallPosters === 'function') {
+    updateCornerWallPosters();
+  }
 }
 
 // Render products grid

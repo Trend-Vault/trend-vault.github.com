@@ -563,6 +563,11 @@ function updateCartUI() {
       newCheckoutBtn.title = 'Proceed to checkout';
     }
   }
+  
+  // Update corner wall display with current cart items
+  if (typeof updateCornerWallPosters === 'function') {
+    updateCornerWallPosters();
+  }
 }
 
 // Show toast notification
