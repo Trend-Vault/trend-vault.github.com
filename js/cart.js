@@ -194,97 +194,116 @@ function showMinimumOrderDialog(remainingAmount) {
   });
 }
 
-// Address Form Modal
+// Show address form in sidebar
 function showAddressForm() {
-  console.log("Showing address form"); // Debug log
+  console.log("Showing address form in sidebar"); // Debug log
   
-  // Remove any existing address modal
-  const existingModal = document.querySelector('.address-modal');
-  if (existingModal) existingModal.remove();
+  const cartView = document.getElementById('cartView');
+  const addressView = document.getElementById('addressView');
+  const cartTitle = document.getElementById('cartTitle');
   
-  const modal = document.createElement('div');
-  modal.className = 'address-modal';
-  modal.innerHTML = `
-    <div class="address-content">
-      <h3>📋 Delivery Details</h3>
-      <form id="addressForm">
-        <div class="form-group">
-          <label>Full Name *</label>
-          <input type="text" id="fullName" required placeholder="Enter your full name" autocomplete="name">
-        </div>
-        
-        <div class="form-group">
-          <label>Phone Number *</label>
-          <input type="tel" id="phone" required placeholder="10-digit mobile number" pattern="[0-9]{10}" autocomplete="tel">
-        </div>
-        
-        <div class="form-group">
-          <label>Email (Optional)</label>
-          <input type="email" id="email" placeholder="your@email.com" autocomplete="email">
-        </div>
-        
-        <div class="form-group">
-          <label>Address *</label>
-          <textarea id="address" required rows="3" placeholder="Street address, apartment, etc." autocomplete="street-address"></textarea>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label>City *</label>
-            <input type="text" id="city" required placeholder="City" autocomplete="address-level2">
-          </div>
-          
-          <div class="form-group">
-            <label>State *</label>
-            <input type="text" id="state" required placeholder="State" autocomplete="address-level1">
-          </div>
-        </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label>Pincode *</label>
-            <input type="text" id="pincode" required placeholder="PIN code" pattern="[0-9]{6}" autocomplete="postal-code">
-          </div>
-          
-          <div class="form-group">
-            <label>Landmark (Optional)</label>
-            <input type="text" id="landmark" placeholder="Nearby landmark">
-          </div>
-        </div>
-        
-        <div class="form-actions">
-          <button type="button" class="cancel-btn">Cancel</button>
-          <button type="submit" class="submit-order-btn">Place Order</button>
-        </div>
-      </form>
-    </div>
-  `;
+  // Switch views
+  if (cartView) cartView.style.display = 'none';
+  if (addressView) addressView.style.display = 'block';
+  if (cartTitle) cartTitle.textContent = 'Delivery Details';
   
-  document.body.appendChild(modal);
+  // Set up back button
+  const backBtn = document.getElementById('backToCartBtn');
+  if (backBtn) {
+    backBtn.addEventListener('click', () => {
+      if (cartView) cartView.style.display = 'flex';
+      if (addressView) addressView.style.display = 'none';
+      if (cartTitle) cartTitle.textContent = 'Your Cart';
+    });
+  }
   
-  // Close modal when clicking outside
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.remove();
-    }
-  });
-  
-  // Handle cancel button
-  const cancelBtn = modal.querySelector('.cancel-btn');
+  // Set up cancel button
+  const cancelBtn = document.getElementById('sidebarCancelBtn');
   if (cancelBtn) {
     cancelBtn.addEventListener('click', () => {
-      modal.remove();
+      if (cartView) cartView.style.display = 'flex';
+      if (addressView) addressView.style.display = 'none';
+      if (cartTitle) cartTitle.textContent = 'Your Cart';
     });
   }
   
-  // Handle form submission
-  const form = document.getElementById('addressForm');
+  // Set up form submission
+  const form = document.getElementById('addressFormSidebar');
   if (form) {
-    form.addEventListener('submit', function(e) {
+    form.onsubmit = function(e) {
       e.preventDefault();
-      submitOrderWithAddress();
-    });
+      submitOrderWithAddressFromSidebar();
+    };
   }
+}
+
+// Submit order from sidebar form
+function submitOrderWithAddressFromSidebar() {
+  console.log("Submitting order from sidebar"); // Debug log
+  
+  // Get address details from sidebar form
+  const fullName = document.getElementById('sidebarFullName').value.trim();
+  const phone = document.getElementById('sidebarPhone').value.trim();
+  const email = document.getElementById('sidebarEmail').value.trim();
+  const address = document.getElementById('sidebarAddress').value.trim();
+  const city = document.getElementById('sidebarCity').value.trim();
+  const state = document.getElementById('sidebarState').value.trim();
+  const pincode = document.getElementById('sidebarPincode').value.trim();
+  const landmark = document.getElementById('sidebarLandmark').value.trim();
+  
+  // Validate all fields
+  if (!validateAddress(fullName, phone, address, city, state, pincode)) {
+    return;
+  }
+  
+  // Show loading state
+  const submitBtn = document.getElementById('sidebarSubmitBtn');
+  if (submitBtn) {
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Processing...';
+    submitBtn.disabled = true;
+  }
+  
+  // Build complete order message
+  let orderMessage = formatCartItemsForWhatsApp();
+  
+  orderMessage += "*DELIVERY ADDRESS:*\n";
+  orderMessage += "─".repeat(30) + "\n";
+  orderMessage += `*Name:* ${fullName}\n`;
+  orderMessage += `*Phone:* ${phone}\n`;
+  if (email) orderMessage += `*Email:* ${email}\n`;
+  orderMessage += `*Address:* ${address}\n`;
+  if (landmark) orderMessage += `*Landmark:* ${landmark}\n`;
+  orderMessage += `*City:* ${city}\n`;
+  orderMessage += `*State:* ${state}\n`;
+  orderMessage += `*Pincode:* ${pincode}\n\n`;
+  
+  orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
+  orderMessage += "*✅ Please confirm this order*";
+  
+  // WhatsApp number (with country code)
+  const whatsappNumber = "917607345514";
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
+  
+  console.log("Opening WhatsApp with number:", whatsappNumber); // Debug log
+  
+  // Open WhatsApp immediately
+  window.open(whatsappUrl, '_blank');
+  
+  // Clear cart and show confirmation
+  clearCart();
+  showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
+  
+  // Close cart sidebar
+  const cartSidebar = document.querySelector('.cart-sidebar');
+  if (cartSidebar && cartSidebar.classList.contains('open')) {
+    cartSidebar.classList.remove('open');
+    const overlay = document.querySelector('.overlay');
+    if (overlay) overlay.classList.remove('active');
+  }
+  
+  // Reset form
+  document.getElementById('addressFormSidebar').reset();
 }
 
 // Format cart items for WhatsApp message
@@ -346,76 +365,6 @@ function validateAddress(fullName, phone, address, city, state, pincode) {
   return true;
 }
 
-// Submit order with address details
-function submitOrderWithAddress() {
-  console.log("Submitting order"); // Debug log
-  
-  // Get address details
-  const fullName = document.getElementById('fullName').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const address = document.getElementById('address').value.trim();
-  const city = document.getElementById('city').value.trim();
-  const state = document.getElementById('state').value.trim();
-  const pincode = document.getElementById('pincode').value.trim();
-  const landmark = document.getElementById('landmark').value.trim();
-  
-  // Validate all fields
-  if (!validateAddress(fullName, phone, address, city, state, pincode)) {
-    return;
-  }
-  
-  // Show loading state
-  const submitBtn = document.querySelector('.submit-order-btn');
-  if (submitBtn) {
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Processing...';
-    submitBtn.disabled = true;
-  }
-  
-  // Build complete order message
-  let orderMessage = formatCartItemsForWhatsApp();
-  
-  orderMessage += "*DELIVERY ADDRESS:*\n";
-  orderMessage += "─".repeat(30) + "\n";
-  orderMessage += `*Name:* ${fullName}\n`;
-  orderMessage += `*Phone:* ${phone}\n`;
-  if (email) orderMessage += `*Email:* ${email}\n`;
-  orderMessage += `*Address:* ${address}\n`;
-  if (landmark) orderMessage += `*Landmark:* ${landmark}\n`;
-  orderMessage += `*City:* ${city}\n`;
-  orderMessage += `*State:* ${state}\n`;
-  orderMessage += `*Pincode:* ${pincode}\n\n`;
-  
-  orderMessage += "*📅 Order Date:* " + new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + "\n";
-  orderMessage += "*✅ Please confirm this order*";
-  
-  // WhatsApp number (with country code)
-  const whatsappNumber = "917607345514";
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
-  
-  console.log("Opening WhatsApp with number:", whatsappNumber); // Debug log
-  console.log("WhatsApp URL:", whatsappUrl); // Debug log
-  
-  // Close modal first
-  const modal = document.querySelector('.address-modal');
-  if (modal) modal.remove();
-  
-  // Open WhatsApp immediately (no delays to avoid popup blockers)
-  window.open(whatsappUrl, '_blank');
-  
-  // Clear cart and show confirmation
-  clearCart();
-  showToast("Order placed successfully! Thank you for shopping with Trend Vault!");
-  
-  // Close cart sidebar if open
-  const cartSidebar = document.querySelector('.cart-sidebar');
-  if (cartSidebar && cartSidebar.classList.contains('open')) {
-    cartSidebar.classList.remove('open');
-    const overlay = document.querySelector('.overlay');
-    if (overlay) overlay.classList.remove('active');
-  }
-}
 
 // Enhanced checkout function with minimum order check
 function checkout() {
@@ -556,6 +505,35 @@ function addCartStyles() {
     .cart-item-remove:hover {
       transform: scale(1.1);
     }
+    
+    #cartView {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: 10px;
+    }
+    
+    #addressView {
+      padding: 15px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    
+    #addressView input,
+    #addressView textarea {
+      font-family: inherit;
+    }
+    
+    #backToCartBtn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 15px;
+      transition: color 0.2s;
+    }
+    
+    #backToCartBtn:hover {
+      color: #FF66CC;
+    }
   `;
   document.head.appendChild(style);
 }
@@ -573,7 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.removeFromCart = removeFromCart;
   window.clearCart = clearCart;
   window.showAddressForm = showAddressForm;
-  window.submitOrderWithAddress = submitOrderWithAddress;
+  window.submitOrderWithAddressFromSidebar = submitOrderWithAddressFromSidebar;
   window.showMinimumOrderDialog = showMinimumOrderDialog;
   
   // Also attach to any existing checkout buttons
@@ -587,11 +565,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   
-  // Close modals with Escape key
+  // Close minimum order modal with Escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      const modals = document.querySelectorAll('.min-order-modal, .address-modal');
-      modals.forEach(modal => modal.remove());
+      const minOrderModal = document.querySelector('.min-order-modal');
+      if (minOrderModal) minOrderModal.remove();
+      
+      // Also close address form view by going back to cart
+      const cartView = document.getElementById('cartView');
+      const addressView = document.getElementById('addressView');
+      const cartTitle = document.getElementById('cartTitle');
+      if (addressView && addressView.style.display !== 'none') {
+        if (cartView) cartView.style.display = 'flex';
+        if (addressView) addressView.style.display = 'none';
+        if (cartTitle) cartTitle.textContent = 'Your Cart';
+      }
     }
   });
 });

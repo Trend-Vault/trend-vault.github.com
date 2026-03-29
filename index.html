@@ -111,11 +111,70 @@
 <!-- Cart Sidebar -->
 <div class="overlay" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
-  <div class="cart-header"><h3>Your Cart</h3><button class="close-cart" id="closeCartBtn">&times;</button></div>
-  <ul class="cart-items" id="cartItemsList"><li style="text-align:center; color:#6B6B8F;">Cart is empty</li></ul>
-  <div id="offerDiscountMsg" class="offer-discount" style="display:none;"></div>
-  <div class="cart-total" id="cartTotalPrice">₹0</div>
-  <button class="checkout-btn" id="checkoutBtn">Checkout →</button>
+  <div class="cart-header"><h3 id="cartTitle">Your Cart</h3><button class="close-cart" id="closeCartBtn">&times;</button></div>
+  
+  <!-- Cart Items View -->
+  <div id="cartView" style="display: flex; flex-direction: column; height: 100%;">
+    <ul class="cart-items" id="cartItemsList"><li style="text-align:center; color:#6B6B8F;">Cart is empty</li></ul>
+    <div id="offerDiscountMsg" class="offer-discount" style="display:none;"></div>
+    <div class="cart-total" id="cartTotalPrice">₹0</div>
+    <button class="checkout-btn" id="checkoutBtn">Checkout →</button>
+  </div>
+  
+  <!-- Address Form View -->
+  <div id="addressView" style="display: none; overflow-y: auto;">
+    <button id="backToCartBtn" style="background: none; border: none; color: #00D4FF; cursor: pointer; font-size: 1rem; margin-bottom: 10px;">← Back to Cart</button>
+    <form id="addressFormSidebar" style="display: flex; flex-direction: column; gap: 12px;">
+      <h3 style="color: #00D4FF; margin: 0;">📋 Delivery Details</h3>
+      
+      <div>
+        <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Full Name *</label>
+        <input type="text" id="sidebarFullName" required placeholder="Enter your full name" autocomplete="name" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+      </div>
+      
+      <div>
+        <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Phone Number *</label>
+        <input type="tel" id="sidebarPhone" required placeholder="10-digit mobile" pattern="[0-9]{10}" autocomplete="tel" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+      </div>
+      
+      <div>
+        <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Email (Optional)</label>
+        <input type="email" id="sidebarEmail" placeholder="your@email.com" autocomplete="email" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+      </div>
+      
+      <div>
+        <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Address *</label>
+        <textarea id="sidebarAddress" required rows="2" placeholder="Street address, apartment, etc." autocomplete="street-address" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;"></textarea>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div>
+          <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">City *</label>
+          <input type="text" id="sidebarCity" required placeholder="City" autocomplete="address-level2" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">State *</label>
+          <input type="text" id="sidebarState" required placeholder="State" autocomplete="address-level1" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+        <div>
+          <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Pincode *</label>
+          <input type="text" id="sidebarPincode" required placeholder="6-digit PIN" pattern="[0-9]{6}" autocomplete="postal-code" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+        </div>
+        <div>
+          <label style="display: block; font-size: 0.9rem; margin-bottom: 4px; color: #A0A0C0;">Landmark (Optional)</label>
+          <input type="text" id="sidebarLandmark" placeholder="Nearby landmark" style="width: 100%; padding: 8px; border: 1px solid #3A3A52; border-radius: 4px; background: #1F1F37; color: #FFF; box-sizing: border-box;">
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px;">
+        <button type="button" id="sidebarCancelBtn" style="padding: 10px; border: 1px solid #3A3A52; background: transparent; color: #A0A0C0; border-radius: 4px; cursor: pointer; font-weight: 600;">Cancel</button>
+        <button type="submit" id="sidebarSubmitBtn" style="padding: 10px; border: none; background: linear-gradient(135deg, #FF66CC, #00D4FF); color: #000; border-radius: 4px; cursor: pointer; font-weight: 600;">Place Order</button>
+      </div>
+    </form>
+  </div>
 </div>
 <div id="toastMsg" class="toast-msg">Added to cart</div>
 
