@@ -222,7 +222,16 @@ const products = [
     category: "marvel", 
     priceA4: 20, 
     priceA3: 40, 
-    img: "assets/images/marvel/Marvel-1.jpg" 
+    img: "assets/images/marvel/m-1.jpg" 
+  },
+    { 
+    id: 302, 
+    name: "Marvel-2", 
+    displayName: "Marvel-302 • Iron Man", 
+    category: "marvel", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/marvel/m-2.jpg" 
   },
   
     // ==================== DC Series (IDs: 401-420) ====================
@@ -457,6 +466,43 @@ const products = [
     priceA4: 20, 
     priceA3: 40, 
     img: "assets/images/quotes/Q-10.jpg" 
+  },
+
+  { 
+    id: 801, 
+    name: "I-1", 
+    displayName: "I-1 • Infinite Possibilities", 
+    category: "islamic", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/islamic/I-1.png" 
+  },
+   { 
+    id: 802, 
+    name: "I-2", 
+    displayName: "I-2 • Guidance and Wisdom", 
+    category: "islamic", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/islamic/I-2.png" 
+  },
+    { 
+    id: 803, 
+    name: "I-3", 
+    displayName: "I-3 • Peaceful Mind", 
+    category: "islamic", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/islamic/I-3.jpg" 
+  },
+   { 
+    id: 804, 
+    name: "I-4", 
+    displayName: "I-4 • Trust in Allah", 
+    category: "islamic", 
+    priceA4: 20, 
+    priceA3: 40, 
+    img: "assets/images/islamic/I-4.png" 
   }
 ];
 

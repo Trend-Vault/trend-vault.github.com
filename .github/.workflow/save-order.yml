@@ -1,0 +1,29 @@
+name: Save Order to Repository
+
+on:
+  repository_dispatch:
+    types: [save_order]
+
+jobs:
+  save-order:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_PAT }}
+      
+      - name: Create orders directory
+        run: mkdir -p orders
+      
+      - name: Save order as JSON
+        run: |
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          echo '${{ github.event.client_payload.order_data }}' > orders/order_${TIMESTAMP}.json
+      
+      - name: Commit and push
+        run: |
+          git config user.name "Order Bot"
+          git config user.email "bot@trend-vault.com"
+          git add orders/
+          git commit -m "New order: ${{ github.event.client_payload.customer_name }}" || true
+          git push

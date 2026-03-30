@@ -89,7 +89,6 @@ function renderProducts() {
     card.innerHTML = `
       <img class="product-img" src="${prod.img}" alt="${prod.displayName}" loading="lazy">
       <div class="product-info">
-        <div class="product-category">${prod.category.toUpperCase()}</div>
         <div class="product-title">${prod.displayName}</div>
         <div class="price-section">
           <span class="current-price" id="price-${prod.id}">₹20</span>

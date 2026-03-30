@@ -730,3 +730,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+// Save order to GitHub Repository
+function saveOrderToGitHub(orderDetails) {
+  const { fullName, phone, email, address, city, state, pincode, landmark } = orderDetails;
+  const { finalTotal } = calculateTotalWithOffer();
+  
+  // Create order JSON object
+  const orderData = {
+    timestamp: new Date().toISOString(),
+    orderDate: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    customer: {
+      name: fullName,
+      phone: phone,
+      email: email || 'N/A',
+      address: address,
+      landmark: landmark || 'N/A',
+      city: city,
+      state: state,
+      pincode: pincode
+    },
+    items: cart.map(item => ({
+      id: item.id,
+      displayName: item.displayName,
+      size: item.size,
+      price: item.price,
+      quantity: item.quantity
+    })),
+    totals: {
+      subtotal: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+      discount: calculateTotalWithOffer().discount,
+      finalTotal: finalTotal
+    },
+    paymentStatus: 'UPI Payment Completed'
+  };
+  
+  // Trigger GitHub workflow
+  fetch('https://api.github.com/repos/YOUR_USERNAME/trend-vault.github.com/dispatches', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'token ' + 'YOUR_GITHUB_PAT_HERE',
+      'Accept': 'application/vnd.github.v3+raw+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      event_type: 'save_order',
+      client_payload: {
+        order_data: JSON.stringify(orderData, null, 2),
+        customer_name: fullName
+      }
+    })
+  })
+  .then(response => {
+    if (response.ok) {
+      console.log('Order saved to GitHub successfully');
+    } else {
+      console.error('Failed to save order to GitHub:', response.statusText);
+    }
+  })
+  .catch(error => console.error('Error saving order:', error));
+}
