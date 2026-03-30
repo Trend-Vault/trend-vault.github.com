@@ -90,10 +90,7 @@ function renderProducts() {
       <img class="product-img" src="${prod.img}" alt="${prod.displayName}" loading="lazy">
       <div class="product-info">
         <div class="product-title">${prod.displayName}</div>
-        <div class="price-section">
-          <span class="current-price" id="price-${prod.id}">₹20</span>
-          <span class="original-price">₹40</span>
-        </div>
+       
         <div class="size-selector" data-product-id="${prod.id}">
           <div class="size-option" data-size="A4">A4 (₹20)</div>
           <div class="size-option" data-size="A3">A3 (₹40)</div>
