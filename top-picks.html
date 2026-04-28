@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Reviewed | Trend Vault</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="nav-container">
+    <div class="logo"><i class="fas fa-bolt"></i> TREND-VAULT</div>
+    <ul class="nav-links">
+      <li><a href="top-picks.html" class="active">Best Reviewed</a></li>
+      <li><a href="index.html">Posters</a></li>
+      <li><a href="books.html">Books</a></li>
+    </ul>
+    <div class="cart-icon" id="cartIcon">
+      <i class="fas fa-shopping-bag"></i>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="container">
+  <div style="margin: 40px 0;">
+    <h2 style="text-align: center; color: #00D4FF; margin-bottom: 30px; font-size: 2.5rem;">
+      <i class="fas fa-star" style="color: #FFD700;"></i> Best Reviewed Products
+    </h2>
+    
+    <!-- Internal Category Tabs -->
+    <div style="display: flex; gap: 12px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center;">
+      <button class="category-tab active" data-category="all" style="padding: 10px 20px; border: 2px solid #00D4FF; background: #00D4FF; color: #0D0C1A; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;">
+        All Products
+      </button>
+      <button class="category-tab" data-category="posters" style="padding: 10px 20px; border: 2px solid #3A3A52; background: transparent; color: #A0A0C0; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;">
+        Best Posters
+      </button>
+      <button class="category-tab" data-category="books" style="padding: 10px 20px; border: 2px solid #3A3A52; background: transparent; color: #A0A0C0; border-radius: 20px; cursor: pointer; font-weight: 600; transition: 0.3s;">
+        Best Books
+      </button>
+    </div>
+    
+    <!-- All Products Tab -->
+    <div class="product-category all" style="display: block;">
+      <h3 style="color: #FF66CC; margin: 20px 0 15px 0; font-size: 1.3rem;">⭐ Top Picks</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px;">
+      
+      <!-- Top Pick 1 -->
+      <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52; transition: 0.3s;">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div style="font-size: 3rem; color: #FFD700;">🥇</div>
+          <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Anime Collection</h3>
+          <p style="color: #A0A0C0; font-size: 0.9rem;">Most Popular</p>
+        </div>
+        <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">
+          Our best-selling anime posters feature iconic characters and stunning artwork. Perfect for anime enthusiasts of all levels.
+        </p>
+        <div style="text-align: center; margin-top: 15px;">
+          <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+        </div>
+      </div>
+
+      <!-- Top Pick 2 -->
+      <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52; transition: 0.3s;">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div style="font-size: 3rem; color: #C0C0FF;">🥈</div>
+          <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Marvel Universe</h3>
+          <p style="color: #A0A0C0; font-size: 0.9rem;">Fan Favorite</p>
+        </div>
+        <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">
+          Featuring Marvel superheroes and cinematic moments. High-quality prints that bring the action to your walls.
+        </p>
+        <div style="text-align: center; margin-top: 15px;">
+          <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+        </div>
+      </div>
+
+      <!-- Top Pick 3 -->
+      <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52; transition: 0.3s;">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div style="font-size: 3rem; color: #CD7F32;">🥉</div>
+          <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Nature & Quotes</h3>
+          <p style="color: #A0A0C0; font-size: 0.9rem;">Trending Now</p>
+        </div>
+        <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">
+          Beautiful nature scenes and inspirational quotes to motivate and inspire. Perfect for home or office décor.
+        </p>
+        <div style="text-align: center; margin-top: 15px;">
+          <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐☆</span>
+        </div>
+      </div>
+
+      <!-- Top Pick 4 -->
+      <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52; transition: 0.3s;">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div style="font-size: 3rem;">🚗</div>
+          <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Car & Bike</h3>
+          <p style="color: #A0A0C0; font-size: 0.9rem;">Automotive Lovers</p>
+        </div>
+        <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">
+          Speed enthusiasts rejoice! Premium automotive posters featuring luxury cars, sports bikes, and racing action.
+        </p>
+        <div style="text-align: center; margin-top: 15px;">
+          <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+        </div>
+      </div>
+
+      <!-- Top Pick 5 -->
+      <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52; transition: 0.3s;">
+        <div style="text-align: center; margin-bottom: 15px;">
+          <div style="font-size: 3rem;">📚</div>
+          <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Books Collection</h3>
+          <p style="color: #A0A0C0; font-size: 0.9rem;">New Addition</p>
+        </div>
+        <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">
+          Curated selection of classic and contemporary books. Perfect for building your personal library with timeless reads.
+        </p>
+        <div style="text-align: center; margin-top: 15px;">
+          <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐☆</span>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+    <!-- Best Posters Tab -->
+    <div class="product-category posters" style="display: none;">
+      <h3 style="color: #FF66CC; margin: 20px 0 15px 0; font-size: 1.3rem;">🎨 Best Posters</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px;">
+        <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52;">
+          <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 3rem;">🎴</div>
+            <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Anime Posters</h3>
+            <p style="color: #A0A0C0; font-size: 0.9rem;">Most Popular</p>
+          </div>
+          <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">Iconic anime characters and stunning artwork from popular series</p>
+          <div style="text-align: center; margin-top: 15px;">
+            <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52;">
+          <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 3rem;">🦸</div>
+            <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Marvel & DC</h3>
+            <p style="color: #A0A0C0; font-size: 0.9rem;">Superhero Collections</p>
+          </div>
+          <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">Featuring your favorite Marvel and DC superheroes</p>
+          <div style="text-align: center; margin-top: 15px;">
+            <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52;">
+          <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 3rem;">🚗</div>
+            <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Cars & Bikes</h3>
+            <p style="color: #A0A0C0; font-size: 0.9rem;">Automotive Passion</p>
+          </div>
+          <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">Premium automotive posters for speed enthusiasts</p>
+          <div style="text-align: center; margin-top: 15px;">
+            <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Best Books Tab -->
+    <div class="product-category books" style="display: none;">
+      <h3 style="color: #FF66CC; margin: 20px 0 15px 0; font-size: 1.3rem;">📚 Best Books</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 40px;">
+        <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52;">
+          <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 3rem;">📖</div>
+            <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Classic Fiction</h3>
+            <p style="color: #A0A0C0; font-size: 0.9rem;">Timeless Novels</p>
+          </div>
+          <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">The Great Gatsby, Pride and Prejudice, 1984 - Literary masterpieces</p>
+          <div style="text-align: center; margin-top: 15px;">
+            <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐⭐</span>
+          </div>
+        </div>
+        <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 20px; border-radius: 12px; border: 1px solid #3A3A52;">
+          <div style="text-align: center; margin-bottom: 15px;">
+            <div style="font-size: 3rem;">🎓</div>
+            <h3 style="color: #00D4FF; margin: 10px 0 5px 0;">Self-Help & Growth</h3>
+            <p style="color: #A0A0C0; font-size: 0.9rem;">Personal Development</p>
+          </div>
+          <p style="color: #B8B8E0; margin: 12px 0; line-height: 1.6;">Inspiring books to enhance your knowledge and skills</p>
+          <div style="text-align: center; margin-top: 15px;">
+            <span style="color: #FF66CC; font-weight: 600; font-size: 1.1rem;">⭐⭐⭐⭐☆</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Choose Section -->
+    <div style="background: linear-gradient(135deg, #1F1F37, #2A2A4A); padding: 30px; border-radius: 12px; border-left: 4px solid #00D4FF; margin-bottom: 40px;">
+      <h3 style="color: #00D4FF; margin-bottom: 15px; font-size: 1.5rem;">💎 Why Our Customers Love These Picks</h3>
+      <ul style="color: #B8B8E0; line-height: 2; margin-left: 20px;">
+        <li>✓ Highest customer satisfaction ratings</li>
+        <li>✓ Premium quality materials and printing</li>
+        <li>✓ Fast and free shipping on prepaid orders</li>
+        <li>✓ Affordable pricing with bundle discounts</li>
+        <li>✓ Easy returns and customer support</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p><i class="fas fa-heart" style="color:#FF66CC;"></i> Trend-Vault — Premium Wall Art | A4: ₹20 | A3: ₹40 | 3 A3 for ₹99</p>
+    <p style="margin-top: 12px;">© 2025 Trend-Vault | Free Shipping on Prepaid Orders | Marvel • DC • Anime • Cars • Bikes</p>
+  </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="js/cart.js"></script>
+
+<script>
+  // Category tab switching
+  document.querySelectorAll('.category-tab').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const category = this.dataset.category;
+      
+      // Update active button
+      document.querySelectorAll('.category-tab').forEach(b => {
+        b.style.borderColor = '#3A3A52';
+        b.style.background = 'transparent';
+        b.style.color = '#A0A0C0';
+      });
+      this.style.borderColor = '#00D4FF';
+      this.style.background = '#00D4FF';
+      this.style.color = '#0D0C1A';
+      
+      // Show/hide product categories
+      document.querySelectorAll('.product-category').forEach(cat => {
+        cat.style.display = 'none';
+      });
+      
+      if(category === 'all') {
+        document.querySelectorAll('.product-category').forEach(cat => {
+          cat.style.display = 'block';
+        });
+      } else {
+        document.querySelector('.product-category.' + category).style.display = 'block';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
