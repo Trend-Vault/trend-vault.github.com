@@ -1,0 +1,170 @@
+/* =============================================
+   TREND-VAULT · BUTEN LIGHT THEME
+   ============================================= */
+
+/* Custom properties – use these in your own CSS later */
+:root {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --accent: #3B82F6;           /* main blue – brand colour */
+  --accent-light: #EFF6FF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --radius: 12px;
+  --font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ===== GLOBAL RESET ===== */
+body {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  font-family: var(--font-family);
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background: var(--bg-primary) !important;
+  box-shadow: var(--shadow-sm) !important;
+  backdrop-filter: none !important;               /* remove blur */
+}
+.logo {
+  background: none !important;
+  color: var(--text-primary) !important;
+  font-weight: 800;
+}
+.nav-links a {
+  color: var(--text-muted) !important;
+}
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent) !important;
+}
+
+/* ===== SIDEBAR (Best Reviewed & phone pages) ===== */
+.sidebar {
+  background: var(--bg-primary) !important;
+  border-right: 1px solid var(--border) !important;
+}
+.sidebar-header h3,
+.sidebar-menu a {
+  color: var(--text-secondary) !important;
+}
+.sidebar-menu a:hover,
+.sidebar-menu a.active-page {
+  background: var(--accent-light) !important;
+  color: var(--accent) !important;
+}
+.dropdown-container a {
+  color: var(--text-muted) !important;
+}
+.dropdown-container a:hover,
+.dropdown-container a.active-sub {
+  color: var(--accent) !important;
+}
+
+/* ===== CARDS & CONTAINERS ===== */
+.phone-card,
+.product-category > div,
+.feature,
+.offer-banner,
+.announcement-bar,
+.why-choose-section {   /* add your own class as needed */
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-light) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.phone-card h2,
+.product-category h3 {
+  color: var(--text-primary) !important;
+}
+.tagline {
+  color: var(--text-muted) !important;
+}
+
+/* ===== SPEC GRID (phone review cards) ===== */
+.spec-item {
+  background: var(--bg-secondary) !important;
+}
+.spec-item strong {
+  color: var(--accent) !important;
+}
+.spec-item span {
+  color: var(--text-secondary) !important;
+}
+
+/* ===== PRICE TAG ===== */
+.price-tag {
+  color: var(--accent) !important;
+  font-weight: 700;
+}
+
+/* ===== COMPARISON TABLE ===== */
+.comparison-table {
+  background: var(--bg-card) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+.comparison-table th {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+}
+.comparison-table td {
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--border-light) !important;
+}
+.comparison-table td:first-child {
+  color: var(--accent) !important;
+  background: var(--accent-light) !important;
+}
+
+/* ===== BUTTONS & BADGES ===== */
+.btn,
+.checkout-btn,
+.category-tab,
+.layout-btn {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  border-radius: var(--radius) !important;
+  border: none !important;
+}
+.cat-badge {
+  background: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border) !important;
+}
+.cat-badge.active {
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--bg-secondary) !important;
+  border-top: 1px solid var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* ===== ANNOUNCEMENT BAR ===== */
+.announcement-bar {
+  background: var(--accent-light) !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* ===== PHONE IMAGE PLACEHOLDER ===== */
+.phone-image-placeholder {
+  background: var(--bg-secondary) !important;
+  border: 2px dashed var(--border) !important;
+  color: var(--text-muted) !important;
+}
+
+/* ===== ADDITIONAL TWEAKS ===== */
+.toast-msg {
+  background: var(--accent) !important;
+  color: #FFF !important;
+}
